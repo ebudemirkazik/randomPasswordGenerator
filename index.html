@@ -4,24 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RandomPasswordGenerator</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
+
   <body>
     <div class="container">
       <h2>Password Generator</h2>
-      <label for=""
-        >Password Lenght
+
+      <label>
+        Password Length:
         <input type="number" id="length" min="4" max="30" value="12" />
       </label>
 
-      <label for="uppercase" class="cl-checkbox"><input class="input" type="checkbox" id="uppercase" name="uppercase" checked>Upper Case <label>
-      <label for="lowercase" class="cl-checkbox"><input class="input" type="checkbox" id="lowercase" name="lowercase" checked>Lower Case <label>
-      <label for="number" class="cl-checkbox"><input class="input" type="checkbox" id="number" name="number" checked>Number <label>
-      <label for="symbol" class="cl-checkbox"><input class="input" type="checkbox" id="symbol" name="symbol">Symbol (@#$!) <label>
+      <label><input type="checkbox" id="uppercase" checked /> Uppercase</label>
+      <label><input type="checkbox" id="lowercase" checked /> Lowercase</label>
+      <label><input type="checkbox" id="numbers" checked /> Number</label>
+      <label><input type="checkbox" id="symbols" /> Symbol (@#$!)</label>
 
-      <button id="generate">Generate</button>
-
-      <div class="output" id="result"></div>
+      <div class="button-result">
+        <button id="generate">Generate</button>
+        <div class="output" id="result">Password</div>
+      </div>
+      <div class="copy-reset">
+        <button id="copy">Kopyala</button>
+        <button id="reset">Reset</button>
+      </div>
     </div>
 
     <script src="./js/script.js"></script>

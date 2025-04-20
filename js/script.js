@@ -6,6 +6,8 @@ const numbersCheckbox = document.getElementById("numbers");
 const symbolsCheckbox = document.getElementById("symbols");
 const generateButton = document.getElementById("generate");
 const resultDiv = document.getElementById("result");
+const copyButton = document.getElementById("copy");
+const reset = document.getElementById("reset");
 
 // Karakter kümeleri
 const UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -14,7 +16,13 @@ const NUMBER_CHARS = "0123456789";
 const SYMBOL_CHARS = "!@#$%^&*()_+{}[]<>?";
 
 // Şifre oluşturma fonksiyonu
-function generatePassword(length, includeUppercase, includeLowercase, includeNumbers, includeSymbols) {
+function generatePassword(
+  length,
+  includeUppercase,
+  includeLowercase,
+  includeNumbers,
+  includeSymbols
+) {
   let characters = "";
   let password = "";
 
@@ -51,3 +59,26 @@ generateButton.addEventListener("click", () => {
 
   resultDiv.textContent = password;
 });
+
+copyButton.addEventListener("click", () => {
+  const password = resultDiv.textContent;
+
+  if (!password || password === "Password" || password.startsWith("Lütfen")) {
+    alert("Kopyalanacak geçerli bir şifre yok.");
+    return;
+  }
+
+  navigator.clipboard
+    .writeText(password)
+    .then(() => {
+      alert("Şifre kopyalandı!");
+    })
+    .catch((err) => {
+      console.error("Kopyalama hatası:", err);
+      alert("Kopyalama başarısız oldu.");
+    });
+});
+
+reset.addEventListener("click", () => {
+  document.getElementById("result").textContent = "Password";
+ });

@@ -13,27 +13,25 @@ input::-webkit-inner-spin-button {
 
 /* Firefox */
 input[type="number"] {
-  -moz-appearance: textfield;
-  padding: 5px;
+  --moz-appearance: textfield;
+  padding: 3px 6px;
   margin-left: 10px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3), 0px 1px 1px rgba(0, 5);
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 input[type="checkbox"] {
-  -moz-appearance: textfield;
+  --moz-appearance: textfield;
   margin-right: 10px;
-  top: 0;
-  left: 0;
   height: 1.3em;
   width: 1.3em;
   background: #606062;
   border-radius: 5px;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3), 0px 1px 1px rgba(0, 5);
+  border-radius: 12px;
 }
-
-.input:checked {
-    color: green;
-}
-
 
 body {
   font-family: Arial, sans-serif;
@@ -45,40 +43,96 @@ body {
   max-width: 400px;
   margin: 0 auto;
   background: white;
-  padding: 20px;
+  padding: 25px 100px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+.container h2 {
+  width: 100%;
+  display: flex;
+  text-align: center;
+}
+
+.button-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
 label {
+  padding: 5px;
   display: block;
   margin-top: 10px;
+  background-color: rgb(236, 85, 85);
+  color: white;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+label:hover {
+  background-color: rgb(255, 0, 0);
 }
 
 .output {
   margin-top: 15px;
-  padding: 10px;
+  padding: 10px 20px;
   background: #eee;
   border-radius: 5px;
   word-break: break-all;
 }
 
+.copy-reset {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
 button {
   margin-top: 15px;
-  width: 100%;
+  width: 70%;
   padding: 10px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: medium;
+  font-weight: bold;
 }
 
-button:hover {
-  background: #0056b3;
+#copy {
+  margin-top: 15px;
+  width: 40%;
+  padding: 10px;
+  background-color: #18cd39;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: medium;
 }
 
+#copy:hover {
+  background: #51d055;
+}
 
+#reset {
+  margin-top: 15px;
+  width: 40%;
+  padding: 10px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: medium;
+}
+
+#reset:hover {
+  background: #ab1919;
+}
