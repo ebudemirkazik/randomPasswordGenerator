@@ -33,6 +33,7 @@ generateButton.addEventListener("click", () => {
 
   resultDiv.textContent = password;
   evaluateStrength(password);
+  analyzePassword(password);
 });
 
 // Şifre oluşturma fonksiyonu
@@ -83,6 +84,7 @@ copyButton.addEventListener("click", () => {
 reset.addEventListener("click", () => {
   document.getElementById("result").textContent = "Password";
   document.getElementById("strength").textContent = "";
+  document.getElementById("analysis").textContent = "";
   lengthInput.value = 12;
   uppercaseCheckbox.checked = true;
   lowercaseCheckbox.checked = true;
@@ -111,4 +113,32 @@ function evaluateStrength(password) {
     strengthText.textContent = "🟢 Strong";
     strengthText.style.color = "green";
   }
+}
+
+function analyzePassword(password) {
+    const analyzeText = document.getElementById("analysis");
+    let issues = [];
+
+    //uzunluk kontrolü
+
+    if (password.length < 8) {
+        issues.push("Password Lenght is to short!");
+    }
+
+    if (/([a-zA-Z0-9])\1{2,}/.test(password)) {
+        issues.push("Too many same characters.");
+    }
+    if (/^[a-z]+$/i.test(password)) {
+        issues.push("Only have letter.");
+    } else if (/^[0-9]+$/.test(password)) {
+        issues.push("Only have numbers.");
+    }
+    
+    if (issues.length === 0) {
+        analyzeText.textContent = "This password is safe!";
+        analyzeText.style.color = "green";
+    } else {
+        analyzeText.textContent = issues.join(" ");
+        analyzeText.style.color = "crimson";
+    }
 }
