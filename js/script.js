@@ -30,6 +30,14 @@ generateButton.addEventListener("click", () => {
     includeNumbers,
     includeSymbols
   );
+  if (password === "Please select at least one option.") {
+    resultDiv.textContent = password;
+
+    // Diğer alanları temizle!
+    document.getElementById("strength").textContent = "";
+    document.getElementById("analysis").textContent = "";
+    return; // Fonksiyonu burada bitir
+  }
 
   resultDiv.textContent = password;
   evaluateStrength(password);
@@ -107,7 +115,7 @@ function evaluateStrength(password) {
     strengthText.textContent = "🔴 Weak";
     strengthText.style.color = "red";
   } else if (strength === 3 || strength === 4) {
-    strengthText.textContent = "🟠 Mdium";
+    strengthText.textContent = "🟠 Medium";
     strengthText.style.color = "orange";
   } else {
     strengthText.textContent = "🟢 Strong";
@@ -116,29 +124,29 @@ function evaluateStrength(password) {
 }
 
 function analyzePassword(password) {
-    const analyzeText = document.getElementById("analysis");
-    let issues = [];
+  const analyzeText = document.getElementById("analysis");
+  let issues = [];
 
-    //uzunluk kontrolü
+  //uzunluk kontrolü
 
-    if (password.length < 8) {
-        issues.push("Password Lenght is to short!");
-    }
+  if (password.length < 8) {
+    issues.push("Password Lenght is to short!");
+  }
 
-    if (/([a-zA-Z0-9])\1{2,}/.test(password)) {
-        issues.push("Too many same characters.");
-    }
-    if (/^[a-z]+$/i.test(password)) {
-        issues.push("Only have letter.");
-    } else if (/^[0-9]+$/.test(password)) {
-        issues.push("Only have numbers.");
-    }
-    
-    if (issues.length === 0) {
-        analyzeText.textContent = "This password is safe!";
-        analyzeText.style.color = "green";
-    } else {
-        analyzeText.textContent = issues.join(" ");
-        analyzeText.style.color = "crimson";
-    }
+  if (/([a-zA-Z0-9])\1{2,}/.test(password)) {
+    issues.push("Too many same characters.");
+  }
+  if (/^[a-z]+$/i.test(password)) {
+    issues.push("Only have letter.");
+  } else if (/^[0-9]+$/.test(password)) {
+    issues.push("Only have numbers.");
+  }
+
+  if (issues.length === 0) {
+    analyzeText.textContent = "This password is safe!";
+    analyzeText.style.color = "green";
+  } else {
+    analyzeText.textContent = issues.join(" ");
+    analyzeText.style.color = "crimson";
+  }
 }
